@@ -1,12 +1,10 @@
 <?php
-if(isset($_POST["Submit1"])){
+if(isset($_POST["submit"])){
 
+ $name=$_POST['name'];
  
  $email=$_POST['email'];
-
- $company =$_POST['company'];
  
- $location =$_POST['location'];
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -18,10 +16,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 	
 }
-$sql = "INSERT INTO formsample  (email,company,location)
-VALUES ('$name','$email','$company','$location')";
+$sql = "INSERT INTO  formsample (name,email)
+VALUES ('$name', '$email')";
 if ($conn->query($sql) === TRUE) {
-   header("");
+
+   header("Location: thankyou.php");;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -31,60 +30,129 @@ $conn->close();
 
  ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+<style>
 
-    <!-- Font Icon -->
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.container .info {
+  margin: 50px auto;
+  text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #0039DD; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #FF5733, #FF5733);
+  background: -moz-linear-gradient(right, #0039DD, #FF0000);
+  background: -o-linear-gradient(right, #0039DD, #FF5733);
+  background: linear-gradient(to left, #FF5733, #FF5733);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+</style>
 </head>
-<body style="background-color: #0068ff;">
+<body>
 
-    <div class="main">
 
-        <section class="signup">
-            <!-- <img src="images/signup-bg.jpg" alt=""> -->
-            <div class="container">
-                <div class="signup-content">
-                    <form method="POST" id="signup-form" class="signup-form">
-                        
-                        						
-                        <div class="form-group">
-                            <input type="email" class="form-input" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required >
-                        </div>
-						
-					 <!-- <div class="form-group">
-                            <input type="text" class="form-input" name="password" id="password" placeholder="Password"/>
-                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-input" name="re_password" id="re_password" placeholder="Repeat your password"/>
-                        </div>-->
-						  <div class="form-group">
-                            <input type="text" class="form-input" name="company" id="company" placeholder="Company" required >
-                        </div>
-						<div class="form-group">
-                            <input type="text" class="form-input" name="location" id="location" placeholder="Location" required >
-                        </div>
-                       
-                        <div class="form-group">
-                            <input type="submit" name="Submit1" id="submit" class="form-submit" value="Submiting"/>
-                        </div>
-                    </form>
-                    
-                </div>
-            </div>
-        </section>
 
-    </div>
 
-    <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<div class="login-page">
+  <div class="form">
+    
+    <form class="login-form">
+      <input type="text" name="name" id="name" placeholder="name"/>
+      
+      <input type="email" name="email" id="email" placeholder="email"/>
+	 <input type="submit" name="submit" id="submit" value="submit"/>
+      
+      
+    </form>
+  </div>
+</div>
+</body>
 </html>
