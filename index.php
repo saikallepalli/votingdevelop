@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST["Submit1"])){
 
- $name=$_POST['name'];
+ $name=$_POST['names'];
  
  $email=$_POST['email'];
 
@@ -55,7 +55,7 @@ $conn->close();
                     <form method="POST" id="signup-form" class="signup-form">
                         
                         <div class="form-group">
-                            <input type="text" class="form-input"  name="name" id="name" placeholder=" Name" required >
+                            <input type="text" class="form-input"  name="names" id="name" placeholder=" Name" required >
                         </div>
 						<!--<div class="form-group">
                             <input type="text" class="form-input" name="title" id="title" placeholder=" Title" required >
