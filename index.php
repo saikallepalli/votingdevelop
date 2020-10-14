@@ -43,7 +43,7 @@ $conn->close();
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="background-color: #0066ff;">
+<body style="background-color: #0068ff;">
 
     <div class="main">
 
