@@ -5,29 +5,6 @@ if(isset($_POST["submit"])){
  
  $email=$_POST['email'];
  
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "sample";
- 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-	
-}
-$sql = "INSERT INTO  formsample (name,email)
-VALUES ('$name', '$email')";
-if ($conn->query($sql) === TRUE) {
-
-   header("Location: thankyou.php");;
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-}
-
  ?>
 <!DOCTYPE html>
 <html>
