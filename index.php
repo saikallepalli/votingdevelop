@@ -1,7 +1,6 @@
 <?php
 if(isset($_POST["Submit1"])){
 
- $name=$_POST['names1'];
  
  $email=$_POST['email'];
 
@@ -19,7 +18,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 	
 }
-$sql = "INSERT INTO formsample  (name,email,company,location)
+$sql = "INSERT INTO formsample  (email,company,location)
 VALUES ('$name','$email','$company','$location')";
 if ($conn->query($sql) === TRUE) {
    header("");
@@ -54,12 +53,7 @@ $conn->close();
                 <div class="signup-content">
                     <form method="POST" id="signup-form" class="signup-form">
                         
-                        <div class="form-group">
-                            <input type="text" class="form-input"  name="names" id="name" placeholder=" Name" required >
-                        </div>
-						<!--<div class="form-group">
-                            <input type="text" class="form-input" name="title" id="title" placeholder=" Title" required >
-                        </div>-->
+                        						
                         <div class="form-group">
                             <input type="email" class="form-input" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required >
                         </div>
