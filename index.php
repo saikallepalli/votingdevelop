@@ -21,7 +21,7 @@ if(isset($_POST["submit"])){
 .form {
   position: relative;
   z-index: 1;
-  background: #800000;
+  background: #FFFF00;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
