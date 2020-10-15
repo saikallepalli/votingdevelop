@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background: ##00FF00;
   width: 100%;
   border: 0;
   margin: 0 0 15px;
